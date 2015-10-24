@@ -9,6 +9,14 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_home_screen" tools:context=".HomeScreen">
 
-    <TextView android:text="Hello World!" android:layout_width="wrap_content"
+    <TextView android:id="@+id/helloWorld"
+        android:text="Hello World!" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button android:id="@+id/mapButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Map"
+        android:layout_below="@id/helloWorld" />
+
 </RelativeLayout>
