@@ -50,8 +50,4 @@ public class HomeScreen extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void onHomeButtonClick(View v) {
-        startActivity(new Intent(HomeScreen.this, MapsActivity.class));
-    }
 }
