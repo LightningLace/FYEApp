@@ -20,7 +20,7 @@ public class HomeScreen2 extends AppCompatActivity {
         Intent intent = getIntent();
         String studentName = intent.getStringExtra(HomeScreen.EXTRA_NAME);
 
-        final Toast toast = Toast.makeText(this, studentName, Toast.LENGTH_SHORT);
+        final Toast toast = Toast.makeText(this, "Hello, " + studentName + "!", Toast.LENGTH_SHORT);
         toast.show();
 
     }
