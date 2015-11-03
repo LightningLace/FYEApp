@@ -12,7 +12,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 public class HomeScreen extends AppCompatActivity {
-
+// TODO: Include Google Play Services attribution text ->
+// from https://developers.google.com/maps/documentation/android-api/intro
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
