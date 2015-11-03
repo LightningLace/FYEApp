@@ -4,11 +4,13 @@
 
 
     <!-- Strings related to login -->
-    <string name="prompt_Name">What should we call you?</string>
-    <string name="prompt_studentType">Are you a&#8230;</string>
+    <string name="prompt_Name">First, what should we call you?</string>
+    <string name="enter_Name">Your name here</string>
+    <string name="prompt_studentType">And are you a&#8230;</string>
     <string name="radio_fys">First-year student</string>
     <string name="radio_pl">Peer leader</string>
-    <string name="btn_display">Display</string>
+    <string name="btn_next">Next</string>
     <string name="action_sign_in">Go!</string>
     <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="title_activity_home_screen2">HomeScreen2</string>
 </resources>

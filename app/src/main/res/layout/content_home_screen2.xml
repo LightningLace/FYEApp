@@ -5,40 +5,53 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_home_screen"
-    tools:context="com.stringclevername.fyeapp.HomeScreen"
+    tools:showIn="@layout/activity_home_screen2"
+    tools:context="com.stringclevername.fyeapp.HomeScreen2"
     android:orientation="vertical">
+
+
+    <RadioGroup
+        android:id="@+id/radioStudentType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+    </RadioGroup>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/prompt_Name"
+        android:text="@string/prompt_studentType"
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="102dp"
-        android:textSize="25sp" />
+        android:textSize="30sp" />
 
-    <EditText
-        android:id="@+id/editText"
+    <RadioButton
+        android:id="@+id/radioFys"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/enter_Name"
-        android:focusable="true"
-        android:textColorHighlight="@color/colorPrimary"
-        android:textColorHint="#bb000000"
-        android:layout_marginTop="86dp"
-        android:layout_weight="0.0"
+        android:text="@string/radio_fys"
+        android:checked="true"
+        android:layout_marginTop="92dp"
         android:layout_gravity="center_horizontal"
-        android:textSize="25sp" />
+        android:textSize="30sp" />
 
+    <RadioButton
+        android:id="@+id/radioPl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/radio_pl"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="login"
-        android:text="@string/btn_next"
+        android:text="@string/action_sign_in"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp" />
 
