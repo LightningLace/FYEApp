@@ -42,7 +42,7 @@ public class SwipeActivity extends AppCompatActivity {
 
         // Get the user's name from the intent
         Intent intent = getIntent();
-        String name = "Welcome " + intent.getStringExtra(HomeScreen.EXTRA_MESSAGE) + "!";
+        String name = "Welcome " + intent.getStringExtra(HomeScreen.EXTRA_NAME) + "!";
         setTitle(name);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
