@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="places_array">
+        <item>Find a Building!</item>
+        <item>------------------</item>
+        <item>Dewing Hall</item>
+        <item>Dow Science Center</item>
+        <item>Humphrey House</item>
+        <item>Light Fine Arts Building</item>
+        <item>Olds-Upton Science Hall</item>
+        <item>Upjohn Library Commons</item>
+        <item>------------------</item>
+        <item>Hicks Center</item>
+        <item>Anderson Athletic Center</item>
+        <item>Athletic Field Complex</item>
+        <item>Markin Racquet Center</item>
+        <item>Natatorium</item>
+        <item>Nelda K. Balch Playhouse</item>
+        <item>Stetson Chapel</item>
+        <item>Stowe Tennis Stadium</item>
+        <item>Arcus Center for Social Justice Leadership</item>
+        <item>Mandelle Hall</item>
+        <item>Facilities Management</item>
+        <item>Hodge House</item>
+        <item>------------------</item>
+        <item>Crissey Residence Hall</item>
+        <item>DeWaters Residence Hall</item>
+        <item>Harmon Residence Hall</item>
+        <item>Hoben Residence Hall</item>
+        <item>Living/Learning Houses</item>
+        <item>Severn Residence Hall</item>
+        <item>Trowbridge Residence Hall</item>
+    </string-array>
+</resources>

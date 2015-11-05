@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Button;
 
 public class HomeScreen extends AppCompatActivity {
     public final static String EXTRA_NAME = "com.stringclevername.fyeapp.MESSAGE";
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
     }

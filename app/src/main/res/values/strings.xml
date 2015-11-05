@@ -17,4 +17,6 @@
     <string name="action_sign_in">Go!</string>
     <string name="title_activity_home_screen">HomeScreen</string>
     <string name="title_activity_home_screen2">HomeScreen2</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="placesListButton">Places</string>
 </resources>

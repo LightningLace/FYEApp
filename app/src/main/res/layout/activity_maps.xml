@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.stringclevername.fyeapp.MapsActivity" >
+
+    <!-- Fragment which displays the map -->
+    <fragment
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/map"
+    tools:context="com.stringclevername.fyeapp.MapsActivity"
+    android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+    <!-- Button to access list of places
+    <Button android:id="@+id/placesButton"
+        android:layout_width="85dp"
+        android:layout_height="45dp"
+        android:minWidth="85dp"
+        android:minHeight="53dp"
+        android:text="@string/placesListButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="8dp"/>
+        -->
+
+    <Spinner android:id="@+id/placesSpinner"
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:minWidth="85dp"
+        android:minHeight="53dp"
+        android:text="@string/placesListButton"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="8dp" />
+
+</RelativeLayout>
