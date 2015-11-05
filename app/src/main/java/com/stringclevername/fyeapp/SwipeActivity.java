@@ -130,6 +130,8 @@ public class SwipeActivity extends AppCompatActivity {
                 case 2:
                     return PlaceholderFragment.newInstance(position + 1);
                 // Or just put your new page here as the next case.
+                case 3:
+
             }
                 return null; // This should never be returned.
         }
