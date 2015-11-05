@@ -3,52 +3,58 @@ package com.stringclevername.fyeapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class HomeScreen extends AppCompatActivity {
-
-    // Used to identify data input in this activity.
-    public final static String EXTRA_MESSAGE = "com.stringclevername.fyeapp.MESSAGE";
+    public final static String EXTRA_NAME = "com.stringclevername.fyeapp.MESSAGE";
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
+    private Button btnDisplay;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+        addListenerOnButton();
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_home_screen, menu);
-        return true;
+    public void addListenerOnButton() {
+
+        radioGroup = (RadioGroup) findViewById(R.id.radioStudentType);
+        btnDisplay = (Button) findViewById(R.id.button1);
+
+        btnDisplay.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                // get selected radio button from radioGroup
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+
+                // find the radiobutton by returned id
+                radioButton = (RadioButton) findViewById(selectedId);
+
+                Toast.makeText(HomeScreen.this, radioButton.getText(), Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
+
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void goTo(View view){
-        Intent intent = new Intent(this, SwipeActivity.class);
-
-        // Get data from the user, give it the appropriate id, and send it to the next activity.
-        String message = "My Name";
-        intent.putExtra(EXTRA_MESSAGE, message);
+    /** Called when the user clicks the Go! button */
+    public void login(View view) {
+        Intent intent = new Intent(this, HomeScreen2.class);
+        EditText editText = (EditText) findViewById(R.id.editText);
+        String studentName = editText.getText().toString();
+        intent.putExtra(EXTRA_NAME, studentName);
         startActivity(intent);
     }
 }
