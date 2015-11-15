@@ -1,4 +1,27 @@
 <resources>
     <string name="app_name">FYEApp</string>
     <string name="action_settings">Settings</string>
+    <string name="mail_button">mailbutton</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string-array name="policies_array">
+        <item>Academic Dishonesty</item>
+        <item>Alcohol</item>
+        <item>Bicycle Registration</item>
+        <item>Classroom Behavior</item>
+        <item>Computer Facilities</item>
+        <item>Drugs</item>
+        <item>Fire Safety</item>
+        <item>Freedom of Expression</item>
+        <item>Harassment</item>
+        <item>ID/Key Cards/Keys</item>
+        <item>Parental Notification</item>
+        <item>Posting of Signs</item>
+        <item>Residential Life</item>
+        <item>"Sexual Misconduct</item>
+        <item>Smoking</item>
+        <item>SSN Protection Act</item>
+        <item>Solicitation</item>
+        <item>Weapons/Explosives</item>
+    </string-array>
+
 </resources>
