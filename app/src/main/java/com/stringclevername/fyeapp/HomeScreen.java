@@ -1,3 +1,4 @@
+
 package com.stringclevername.fyeapp;
 
 import android.content.Intent;
@@ -49,7 +50,7 @@ public class HomeScreen extends AppCompatActivity {
 
     }
 
-    /** Called when the user clicks the Go! button */
+    /** Called when the user clicks the "Next" button */
     public void login(View view) {
         Intent intent = new Intent(this, HomeScreen2.class);
         EditText editText = (EditText) findViewById(R.id.editText);
