@@ -2,12 +2,16 @@ package com.stringclevername.fyeapp;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.location.Location;
+import android.location.LocationManager;
+import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -16,7 +20,6 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -61,6 +64,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -133,27 +137,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Check to see whether location permission has been granted
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
+            // Check to see whether Location Services are enabled
+            checkLocationServices();
             // Enable My Location layer, to show current location
             mMap.setMyLocationEnabled(true);
         } else {
-            // TODO: Ask user to enable permission
-
+            // App does not have Location Permission
+            // Instantiate an AlertDialog.Builder with constructor
+            AlertDialog.Builder popup = new AlertDialog.Builder(getApplicationContext());
+            // Set dialog characteristics
+            popup.setMessage("You have not granted Location Permission for the app. Your current location will be unavailable.");
+            // Add "OK" button
+            popup.setPositiveButton("OK", null);
+            // Create and show AlertDialog
+            popup.show();
         }
-
-
-        // Create LatLng objects, to be used
-        // in markers for campus buildings
-        LatLng center = new LatLng(42.289714, -85.601228);  // ~center of campus
-        LatLng hicksLoc = new LatLng(42.289, -85.600); // Hicks Center
-
-
-        // Define default (main) camera position
-        CameraPosition main = new CameraPosition.Builder()
-                .target(center) // sets location coordinates to KCollege center
-                .zoom(18)       // sets zoom level
-                .bearing(270)    // sets orientation (West at top)
-                .build();        // creates a CameraPosition from the builder
-
 
         // Custom info window adapter implementation
         // Needed to allow multiple lines in snippets
@@ -206,7 +204,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Marker anderson = mMap.addMarker(new MarkerOptions().position(new LatLng(42.290094, -85.598527)).title("Anderson Athletic Center"));
         Marker fields = mMap.addMarker(new MarkerOptions().position(new LatLng(42.285666, -85.608086)).title("Athletic Field Complex")
                 .snippet("- Angell Football Field/Fieldhouse\n- MacKenzie Soccer Field\n- Softball Field\n- Woodworth Baseball Field"));
-        Marker markin = mMap.addMarker(new MarkerOptions().position(new LatLng(42.290889, -85.596703)).title("Markin Racquet Center"));
+        Marker markin = mMap.addMarker(new MarkerOptions().position(new LatLng(42.290889, -85.596703)).title("Fitness and Wellness Center"));
         Marker nat = mMap.addMarker(new MarkerOptions().position(new LatLng(42.290624, -85.598195)).title("Natatorium"));
         Marker nelda = mMap.addMarker(new MarkerOptions().position(new LatLng(42.291298, -85.600107)).title("Nelda K. Balch Festival Playhouse"));
         Marker stetson = mMap.addMarker(new MarkerOptions().position(new LatLng(42.289610, -85.601371)).title("Stetson Chapel"));
@@ -277,14 +275,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // Store current location
             newCenter = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
             // Debug Toast
-            Toast success = Toast.makeText(this, "Debug: Success", Toast.LENGTH_SHORT);
-            success.show();
+            //Toast success = Toast.makeText(this, "Debug: Success", Toast.LENGTH_SHORT);
+            //success.show();
         } else {
             // Store K College center
             newCenter = new LatLng(42.289714, -85.601228);  // ~center of campus
             // Debug Toast
-            Toast error = Toast.makeText(this, "Debug: mLastLocation is null", Toast.LENGTH_SHORT);
-            error.show();
+            //Toast error = Toast.makeText(this, "Debug: mLastLocation is null", Toast.LENGTH_SHORT);
+            //error.show();
         }
         // Create CameraPosition to center on
         CameraPosition main = new CameraPosition.Builder()
@@ -293,7 +291,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .zoom(18)           // sets reasonable zoom level
                 .bearing(270)       // orient so West is up
                 .build();             // creates a CameraPosition from the builder
-        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(main));
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(main));
     }
 
 
@@ -306,4 +304,42 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onConnectionFailed(ConnectionResult connectionResult) {
 
     }
+
+    /**
+     * Check whether Location Services enabled
+     * Give user option to enable if disabled
+     */
+    public void checkLocationServices() {
+        Context context = getApplicationContext();
+        LocationManager lm = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
+        boolean gps_enabled = false;
+        boolean network_enabled = false;
+
+        try {
+            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch (Exception ex) {}
+
+        try {
+            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        } catch(Exception ex) {}
+
+        if (!gps_enabled && !network_enabled) {
+            // notify user
+            AlertDialog.Builder dialog = new AlertDialog.Builder(MapsActivity.this);
+            dialog.setMessage(R.string.gps_network_not_enabled);
+            dialog.setPositiveButton(R.string.open_location_settings, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                    // TODO Auto-generated method stub
+                    Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    MapsActivity.this.startActivity(myIntent);
+                    // get gps
+                }
+            });
+            dialog.setNegativeButton(R.string.cancel, null);
+            dialog.show();
+        }
+
+    }
+
 }
