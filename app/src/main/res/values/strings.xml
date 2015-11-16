@@ -17,11 +17,53 @@
         <item>Parental Notification</item>
         <item>Posting of Signs</item>
         <item>Residential Life</item>
-        <item>"Sexual Misconduct</item>
+        <item>Sexual Misconduct</item>
         <item>Smoking</item>
         <item>SSN Protection Act</item>
         <item>Solicitation</item>
         <item>Weapons/Explosives</item>
+    </string-array>
+
+    <string-array name="dsa_array">
+        <item>African Studies</item>
+        <item>American Studies</item>
+        <item>Anthropology and Sociology</item>
+        <item>Art History</item>
+        <item>Biochemistry and Molecular Biology</item>
+        <item>Biological Physics</item>
+        <item>Biology</item>
+        <item>Business</item>
+        <item>Chemistry</item>
+        <item>Chinese</item>
+        <item>Classics</item>
+        <item>Community and Global Health</item>
+        <item>Computer Science</item>
+        <item>Critical Theory</item>
+        <item>East Asian Studies</item>
+        <item>Economics</item>
+        <item>3/2 Engineering</item>
+        <item>English</item>
+        <item>Environmental Studies</item>
+        <item>French</item>
+        <item>German</item>
+        <item>History</item>
+        <item>International Area Studies</item>
+        <item>Japanese</item>
+        <item>Jewish Studies</item>
+        <item>Math</item>
+        <item>Media Studies</item>
+        <item>Music</item>
+        <item>Neuroscience</item>
+        <item>Philosophy</item>
+        <item>Physics</item>
+        <item>Political Science</item>
+        <item>Psychology</item>
+        <item>Public Policy and Urban Affairs</item>
+        <item>Religion</item>
+        <item>Spanish</item>
+        <item>Art</item>
+        <item>Theatre Arts</item>
+        <item>Women, Gender and Sexuality</item>
     </string-array>
 
 </resources>
