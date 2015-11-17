@@ -53,6 +53,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.stringclevername.fyeapp.HomeScreen" />
         </activity>
+        <activity
+            android:name=".fysActivity"
+            android:label="@string/title_activity_fys"
+            android:parentActivityName=".HomeScreen2"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.stringclevername.fyeapp.HomeScreen2" />
+        </activity>
+        <activity
+            android:name=".plActivity"
+            android:label="@string/title_activity_pl"
+            android:parentActivityName=".HomeScreen2"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.stringclevername.fyeapp.HomeScreen2" />
+        </activity>
     </application>
 
 </manifest>

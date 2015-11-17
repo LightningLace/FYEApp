@@ -7,6 +7,7 @@
     <string name="title_activity_swipe">SwipeActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
+
     <!-- Strings related to login -->
     <string name="prompt_Name">First, what should we call you?</string>
     <string name="enter_Name">Your name here</string>
@@ -43,4 +44,8 @@
         <item>Weapons/Explosives</item>
     </string-array>
 
+    <string name="title_activity_fys">fysActivity</string>
+    <string name="title_activity_pl">plActivity</string>
+    <string name="hs2button1">First-Year Student</string>
+    <string name="hs2button2">Peer Leader</string>
 </resources>
