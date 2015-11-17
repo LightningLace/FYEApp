@@ -21,6 +21,7 @@
     <string name="placesListButton">Places</string>
     <string name="mail_button">mailbutton</string>
     <string name="title_activity_test">TestActivity</string>
+    <string name="spinner_prompt">Choose a policy</string>
     <string-array name="policies_array">
         <item>Academic Dishonesty</item>
         <item>Alcohol</item>

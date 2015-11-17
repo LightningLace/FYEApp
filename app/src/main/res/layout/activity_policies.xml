@@ -5,30 +5,35 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.stringclevername.fyeapp.PoliciesActivity">
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinnerPolicies"
-        android:layout_below="@+id/aboutPolicies"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    tools:context="com.stringclevername.fyeapp.SwipeActivity$PoliciesActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Choose from our student policies you would like to know about!"
-        android:id="@+id/aboutPolicies"
+        android:text="Choose a policy from the menu below"
+        android:id="@+id/choose"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:textAlignment="center"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerPolicies"
+        android:layout_centerHorizontal="true"
+        android:prompt="@string/spinner_prompt"
+        android:padding="10dp"
+        android:background="@color/spinner_background"
+        android:popupBackground="@color/spinner_background"
+        android:layout_below="@+id/choose" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go!"
+        android:text="Go"
         android:id="@+id/goButton"
         android:layout_below="@+id/spinnerPolicies"
         android:layout_centerHorizontal="true" />
@@ -39,17 +44,14 @@
         android:id="@+id/scrollViewPolicies"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/goButton">
+        android:layout_below="@+id/goButton"
+        android:layout_marginBottom="60dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Policies will appear and be explained here! (But some will link you to the webpage)"
-            android:id="@+id/policyDisplay"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/goButton" />
+            android:id="@+id/policyDisplay" />
     </ScrollView>
 
 </RelativeLayout>
