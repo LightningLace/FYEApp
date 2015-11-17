@@ -26,8 +26,8 @@
         android:layout_centerHorizontal="true"
         android:prompt="@string/spinner_prompt"
         android:padding="10dp"
-        android:background="@color/spinner_background"
-        android:popupBackground="@color/spinner_background"
+        android:background="@color/colorPrimaryBright"
+        android:popupBackground="@color/colorPrimaryBright"
         android:layout_below="@+id/choose" />
 
     <Button

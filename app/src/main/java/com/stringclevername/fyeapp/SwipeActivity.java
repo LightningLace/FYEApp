@@ -11,15 +11,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -69,29 +69,6 @@ public class SwipeActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_swipe, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -116,8 +93,8 @@ public class SwipeActivity extends AppCompatActivity {
      *
      * 5. Add a case to getPageTitle that returns the title for your page.
      *
-     * The PlaceholderFragment has been left in to give an example how this
-     * all works. Feel free to take it out once you've got the hang of it.
+     * The PlaceholderFragment has been left in (though commented) to give an example how this
+     * all works.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -132,7 +109,7 @@ public class SwipeActivity extends AppCompatActivity {
 
             // The positions determine the order in which the pages are viewed. Starts at 0.
             switch (position) {
-                case 0:
+                /*case 0:
                     return PlaceholderFragment.newInstance(position + 1);
                 case 1:
                     return PlaceholderFragment.newInstance(position + 1);
@@ -141,9 +118,12 @@ public class SwipeActivity extends AppCompatActivity {
                 case 2:
                     return PlaceholderFragment.newInstance(position + 1);
                 // Or just put your new page here as the next case.
-                case 3:
+                */
+                case 0:
+                    return new scheduleActivity();
+                case 1:
                     return new RAListActivity();
-                case 4:
+                case 2:
                     return new PoliciesActivity();
 
             }
@@ -156,7 +136,7 @@ public class SwipeActivity extends AppCompatActivity {
          */
         public int getCount() {
             // Show n total pages.
-            return 5;
+            return 3;
         }
 
         @Override
@@ -165,64 +145,131 @@ public class SwipeActivity extends AppCompatActivity {
          */
         public CharSequence getPageTitle(int position) {
             switch (position) {
-                case 0:
+                /*case 0:
                     return "SECTION 1";
                 case 1:
                     return "SECTION 2";
                 case 2:
                     return "SECTION 3";
-                case 3:
+                    */
+                case 0:
+                    return "Schedule";
+                case 1:
                     return "RA List";
-                case 4:
+                case 2:
                     return "Policies";
             }
             return null;
         }
     }
 
-    public void goToQR(MenuItem menuItem){
-        // go to FYF checkin page
-    }
-
-    public void goToMap(MenuItem menuItem){
-        // go to map
-    }
-
-    /**
+    /*
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
-        /**
+    // public static class PlaceholderFragment extends Fragment {
+        /*
          * The fragment argument representing the section number for this
          * fragment.
          */
-        private static final String ARG_SECTION_NUMBER = "section_number";
+        //private static final String ARG_SECTION_NUMBER = "section_number";
 
-        /**
+        /*
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
+       /* public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
             return fragment;
-        }
+        }*/
 
-        public PlaceholderFragment() {
-        }
+       // public PlaceholderFragment() {
+        //}
 
-        @Override
+       /* @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.placeholder_fragment_swipe, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
+        }*/
+    //}
+
+    /**
+     *
+     *
+     */
+    public static class scheduleActivity extends Fragment {
+
+        ListView listView ;
+        View rootView;
+
+        public scheduleActivity(){}
+
+        @Override
+        public View onCreateView(LayoutInflater inflator, ViewGroup container, Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            rootView = inflator.inflate(R.layout.content_fys, container, false);
+
+            // Get ListView object from xml
+            listView = (ListView) rootView.findViewById(R.id.list);
+
+            // static values to show in ListView
+            String[] values = new String[] {
+                    "Tuesday: ",
+                    "Wednesday: ",
+                    "Thursday: ",
+                    "Friday: ",
+                    "Saturday: ",
+                    "Sunday: ",
+            };
+
+            // Define a new Adapter
+            // First parameter - Context
+            // Second parameter - Layout for the row
+            // Third parameter - ID of the TextView to which the data is written
+            // Fourth - the Array of data
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
+                    android.R.layout.simple_list_item_1, values);
+
+
+            // Assign adapter to ListView
+            listView.setAdapter(adapter);
+
+            // ListView Item Click Listener
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view,
+                                        int position, long id) {
+
+                    // ListView Clicked item value
+                    String itemValue = (String) listView.getItemAtPosition(position);
+
+                    // Show Alert
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "Position :" + position + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+                            .show();
+                }
+            });
+
+            return rootView;
         }
     }
 
+    /**
+     * A fragment for displaying the list of RAs.
+     *
+     * Created by Noah Getz on
+     *
+     * Modifed by Jordan Meiller on 11/15/12
+     *          Modified to use as a Fragment instead of an Activity
+     *
+     */
     public static class RAListActivity extends Fragment {
 
         View rootView;
@@ -296,6 +343,15 @@ public class SwipeActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * A fragment for displaying or linking to College policies.
+     *
+     * Created by Noah Getz on
+     *
+     * Modifed by Jordan Meiller on 11/15/12
+     *          Modified to use as a Fragment instead of an Activity
+     *
+     */
     public static class PoliciesActivity extends Fragment implements AdapterView.OnItemSelectedListener {
 
         Button goButton;
