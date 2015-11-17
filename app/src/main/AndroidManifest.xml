@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.stringclevername.fyeapp" >
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -37,13 +38,8 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".HomeScreen2"
-            android:label="@string/title_activity_home_screen2"
-            android:parentActivityName=".HomeScreen"
-            android:theme="@style/AppTheme.NoActionBar" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.stringclevername.fyeapp.HomeScreen" />
+            android:name=".PoliciesActivity"
+            android:label="Student Policies">
         </activity>
         <activity
             android:name=".SwipeActivity"
@@ -60,6 +56,8 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.stringclevername.fyeapp.HomeScreen" />
+        </activity>
+        <activity android:name=".RAListActivity" >
         </activity>
     </application>
 
