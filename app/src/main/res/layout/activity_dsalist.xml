@@ -5,20 +5,20 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.stringclevername.fyeapp.DSAListActivity">
+    tools:context="com.stringclevername.fyeapp.SwipeActivity$DSAListActivity">
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinnerDSA"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:prompt="@string/spinner_prompt2"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go!"
+        android:text="Go"
         android:id="@+id/goButton2"
         android:layout_below="@+id/spinnerDSA"
         android:layout_centerHorizontal="true" />
@@ -27,9 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/spinnerDSA"
         android:layout_alignEnd="@+id/spinnerDSA"
         android:layout_below="@+id/goButton2"
         android:layout_above="@+id/moreInfoButton">
@@ -38,11 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Do you have questions about particular classes, majors, minors, and/or concentrations? Departmental Student Advisors (DSAs) can help! Nominated by departments or programs, DSAs know firsthand what it’s like to be (for example) an English major or an Environmental Studies concentrator. They are available via e-mail and at special campus events to answer your questions. DSAs do not replace academic advisors or faculty, but serve as an additional resource at K.And watch for announcements advertising DSA events on campus."
-            android:id="@+id/textViewDSA"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/goButton2"
-            android:layout_alignBottom="@+id/scrollView" />
+            android:id="@+id/textViewDSA"/>
     </ScrollView>
 
     <Button
@@ -51,6 +45,7 @@
         android:text="More Information"
         android:id="@+id/moreInfoButton"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"/>
 
 </RelativeLayout>

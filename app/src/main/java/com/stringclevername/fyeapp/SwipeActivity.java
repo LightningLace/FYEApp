@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -66,6 +67,10 @@ public class SwipeActivity extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        if ((intent.getStringExtra(Info5.EXTRA_FRAG)).equals("fyfFrag")){
+            mViewPager.setCurrentItem(5); // sets the current item to the FYF fragment if coming from FYF-related activities
+        }
     }
 
 
@@ -124,7 +129,11 @@ public class SwipeActivity extends AppCompatActivity {
                 case 1:
                     return new RAListActivity();
                 case 2:
+                    return new DSAListActivity();
+                case 3:
                     return new PoliciesActivity();
+                case 4:
+                    return new FYFFirstScreen(); // if moved, remember to change "fyfFrag" behavior
 
             }
                 return null; // This should never be returned.
@@ -136,7 +145,7 @@ public class SwipeActivity extends AppCompatActivity {
          */
         public int getCount() {
             // Show n total pages.
-            return 3;
+            return 5;
         }
 
         @Override
@@ -157,7 +166,11 @@ public class SwipeActivity extends AppCompatActivity {
                 case 1:
                     return "RA List";
                 case 2:
+                    return "DSA List";
+                case 3:
                     return "Policies";
+                case 4:
+                    return "FYF Check-In";
             }
             return null;
         }
@@ -199,7 +212,13 @@ public class SwipeActivity extends AppCompatActivity {
     //}
 
     /**
+     * Displays a schedule for the work, allowing user to select a day for more detail.
+     * [INCOMPLETE: does not connect to a schedule yet.]
      *
+     * @author Ariah Lacey
+     *
+     * Modified by Jordan Meiller  11/17/15
+     *          Modified to work as a Fragment. Added documentation.
      *
      */
     public static class scheduleActivity extends Fragment {
@@ -233,7 +252,7 @@ public class SwipeActivity extends AppCompatActivity {
             // Third parameter - ID of the TextView to which the data is written
             // Fourth - the Array of data
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
                     android.R.layout.simple_list_item_1, values);
 
 
@@ -375,14 +394,14 @@ public class SwipeActivity extends AppCompatActivity {
             rootView = inflator.inflate(R.layout.activity_policies, container, false);
             Spinner spinner = (Spinner) rootView.findViewById(R.id.spinnerPolicies);
             // Create an ArrayAdapter using the string array and a default spinner layout
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                     R.array.policies_array, android.R.layout.simple_spinner_item);
             // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             // Apply the adapter to the spinner
             spinner.setPrompt("Choose a policy...");
 
-            spinner.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.contact_spinner_row_nothing_selected, getActivity().getApplicationContext()));
+            spinner.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.contact_spinner_row_nothing_selected, getContext()));
 
             spinner.setOnItemSelectedListener(this);
             goButton = (Button) rootView.findViewById(R.id.goButton);
@@ -549,7 +568,7 @@ public class SwipeActivity extends AppCompatActivity {
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            spinValue = position;
+            spinValue = position-1;
         }
 
         @Override
@@ -557,6 +576,249 @@ public class SwipeActivity extends AppCompatActivity {
 
         }
 
+
+    }
+
+    public static class DSAListActivity extends Fragment implements AdapterView.OnItemSelectedListener {
+
+        Button goButton;
+        Button infoButton;
+        int spinValue;
+        String myURL = "";
+        String DSAText = "";
+        String[] majors = {"African Studies", "American Studies", "Anthropology and Sociology", "Art History", "Biochemistry and Molecular Biology", "Biological Physics", "Biology",
+                "Business", "Chemistry", "Chinese", "Classics", "Community and Global Health", "Computer Science", "Critical Theory", "East Asian Studies", "Economics", "3/2 Engineering", "English",
+                "Environmental Studies", "French", "German", "History", "International Area Studies", "Japanese", "Jewish Studies", "Math", "Media Studies", "Music", "Neuroscience", "Philosophy",
+                "Physics", "Political Science", "Psychology", "Public Policy and Urban Affairs", "Religion", "Spanish", "Art", "Theatre Arts", "Women, Gender & Sexuality"};
+
+        String[] urls = {"https://reason.kzoo.edu/advising/dsas/african_studies/", "https://reason.kzoo.edu/advising/dsas/american_studies/", "https://reason.kzoo.edu/advising/dsas/anso/",
+                "https://reason.kzoo.edu/advising/dsas/art_history/", "https://reason.kzoo.edu/advising/dsas/biochem/", "https://reason.kzoo.edu/advising/dsas/biological_physics/",
+                "https://reason.kzoo.edu/advising/dsas/bio/", "https://reason.kzoo.edu/advising/dsas/business/", "https://reason.kzoo.edu/advising/dsas/chem/",
+                "https://reason.kzoo.edu/advising/dsas/chinese/", "https://reason.kzoo.edu/advising/dsas/classics/", "https://reason.kzoo.edu/advising/dsas/cgh/",
+                "https://reason.kzoo.edu/advising/dsas/computer_sci/", "https://reason.kzoo.edu/advising/dsas/critical_theory/", "https://reason.kzoo.edu/advising/dsas/east_asian_studies/",
+                "https://reason.kzoo.edu/advising/dsas/economics/", "https://reason.kzoo.edu/advising/dsas/32_engineering/", "https://reason.kzoo.edu/advising/dsas/english/",
+                "https://reason.kzoo.edu/advising/dsas/enviro_studies/", "https://reason.kzoo.edu/advising/dsas/french/", "https://reason.kzoo.edu/advising/dsas/german/",
+                "https://reason.kzoo.edu/advising/dsas/history/", "https://reason.kzoo.edu/advising/dsas/ias/", "https://reason.kzoo.edu/advising/dsas/japanese/",
+                "https://reason.kzoo.edu/advising/dsas/jewish_studies/", "https://reason.kzoo.edu/advising/dsas/math/", "https://reason.kzoo.edu/advising/dsas/media_studies/",
+                "https://reason.kzoo.edu/advising/dsas/music/", "https://reason.kzoo.edu/advising/dsas/neuroscience/", "https://reason.kzoo.edu/advising/dsas/philosophy/",
+                "https://reason.kzoo.edu/advising/dsas/physics/", "https://reason.kzoo.edu/advising/dsas/poli_sci/", "https://reason.kzoo.edu/advising/dsas/psychology/",
+                "https://reason.kzoo.edu/advising/dsas/ppua/", "https://reason.kzoo.edu/advising/dsas/religion/", "https://reason.kzoo.edu/advising/dsas/spanish/", "https://reason.kzoo.edu/advising/dsas/art/",
+                "https://reason.kzoo.edu/advising/dsas/theatre/", "https://reason.kzoo.edu/advising/dsas/womens_studies/"};
+        View rootView;
+
+
+        public DSAListActivity(){}
+
+        @Override
+        public View onCreateView(LayoutInflater inflator, ViewGroup container, Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            rootView= inflator.inflate(R.layout.activity_dsalist, container, false);
+
+            Spinner spinner = (Spinner) rootView.findViewById(R.id.spinnerDSA);
+            // Create an ArrayAdapter using the string array and a default spinner layout
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                    R.array.dsa_array, android.R.layout.simple_spinner_item);
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+            spinner.setPrompt("Choose a department...");
+            // Apply the adapter to the spinner
+            spinner.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.contact_spinner_row_nothing_selected2, getContext()));
+
+            spinner.setOnItemSelectedListener(this);
+
+            //Sets up the More Info Button to take you to the web page of the DSA
+            infoButton = (Button) rootView.findViewById(R.id.moreInfoButton);
+            infoButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View arg0) {
+                    myURL = urls[spinValue];
+                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(myURL));
+                    startActivity(i);
+                }
+            });
+
+            goButton = (Button) rootView.findViewById(R.id.goButton2);
+
+            goButton.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View arg0) {
+                    myURL = urls[spinValue];
+                    new MyTask().execute();
+                }
+            });
+            return rootView;
+        }
+
+        private class MyTask extends AsyncTask<Void, Void, String> {
+
+            @Override
+            protected String doInBackground(Void... params) {
+                DSAText = "Error getting DSA information! Are you connected to the internet?";
+                try {
+                    Document doc = Jsoup.connect(myURL).get();
+                    DSAText = doc.select("div.pagetitle, div.contentmain").text();
+                    DSAText = DSAText.replace(" DSA Spotlights", "");
+                    System.out.println(DSAText);
+                    String[] info = {"Email:", "E-mail:", "Hometown:", "Major", "Minor", "Concentration", "Study Abroad:", "Favorite Ice Cream Flavor:", "Best Adjective to Describe You:", "In 10 words or less, why should a student want to be involved in this department?"};
+
+                    //After getting the text from the URL, this loop organizes it by adding new lines in between each point
+                    DSAText = DSAText.substring(0, DSAText.indexOf(majors[spinValue])) + '\n' + DSAText.substring(DSAText.indexOf(majors[spinValue]), DSAText.length());
+
+                    for(int i =0; i < 10; i++){
+                        if(i == 9){
+                            DSAText = DSAText.substring(0, DSAText.indexOf(info[i]));
+                        }
+                        else if(DSAText.contains(info[i])){
+                            DSAText = DSAText.substring(0, DSAText.indexOf(info[i])) + '\n' + DSAText.substring(DSAText.indexOf(info[i]), DSAText.length());
+                        }
+                    }
+
+
+                    System.out.println(DSAText);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return DSAText;
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                ((TextView) rootView.findViewById(R.id.textViewDSA)).setText(DSAText);
+            }
+        }
+
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            spinValue = position-1;
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    }
+
+    /**
+     *
+     * This is the main screen and activity of the forums app. It is organized into 3
+     * different parts
+     *  1.Forum check in: a button that will direct the user to the forum check-in activity
+     *  2. Forum information: A button that will lead to a series of pop-up explaining
+     *      to the user what a forum is and how many they need to go to
+     *  3. Forum shcedule: This also doubles as the title of the app. This portion consists o
+     *      of the title, and 5 speech bubble shaped buttons, each button will direct the user to
+     *      the according group and display that groups forum schedule
+     *
+     * @author Melany Diaz
+     * date: November 2015
+     * %this is an app build for Mobile Computing 490, Professor Pam Cutter%
+     *
+     * Modified by Jordan Meiller  11/18/15
+     *          Modified to work as a Fragment
+     */
+    public static class FYFFirstScreen extends Fragment{
+
+        Button checkInBtn;
+        Button forumInfoBtn;
+        ImageButton group1;
+        ImageButton group2;
+        ImageButton group3;
+        ImageButton group4;
+        View rootView;
+
+        public FYFFirstScreen(){}
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            rootView = inflater.inflate(R.layout.activity_fyf_first_screen, container, false);
+
+
+            /*
+             * The following lines of code will get and declare the 7 buttons that
+             * are in this activity
+             */
+            //Check-in
+            checkInBtn= (Button) rootView.findViewById(R.id.checkInButton);
+
+            //Forum Information
+            forumInfoBtn = (Button) rootView.findViewById(R.id.forumButton);
+
+
+            //Each group button
+            group1 = (ImageButton) rootView.findViewById(R.id.group1);
+            group2 = (ImageButton) rootView.findViewById(R.id.group2);
+            group3 = (ImageButton) rootView.findViewById(R.id.group3);
+            group4 = (ImageButton) rootView.findViewById(R.id.group4);
+
+
+
+            /*
+             * The following will implement the listeners for each of the seven buttons
+             * each listener directs the user to the according following activity
+             */
+
+            //Check-In
+            checkInBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Opening check in activity
+                    Intent i = new Intent(getActivity().getApplicationContext(), CheckInMain.class);
+                    startActivity(i);
+                }
+            });
+
+
+            //Forum Information
+            forumInfoBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Opening forum popuips
+                    Intent i = new Intent(getActivity().getApplicationContext(), Info1.class);
+                    startActivity(i);
+                }
+            });
+
+            //Group1
+            group1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getActivity().getApplicationContext(), Group1.class);
+                    startActivity(i);
+                }
+            });
+
+            //Group2
+            group2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getActivity().getApplicationContext(), Group2.class);
+                    startActivity(i);
+                }
+            });
+
+            //Group3
+            group3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getActivity().getApplicationContext(), Group3.class);
+                    startActivity(i);
+                }
+            });
+
+            //Group4
+            group4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getActivity().getApplicationContext(), Group4.class);
+                    startActivity(i);
+                }
+            });
+
+            return rootView;
+        }
 
     }
 }

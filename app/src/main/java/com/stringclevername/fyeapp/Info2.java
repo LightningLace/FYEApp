@@ -3,24 +3,21 @@ package com.stringclevername.fyeapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.Button;
 
-import k12md02converter.firstyearforums.R;
-
+/**
+ * This activity takes the information shown in the corresponding
+ * xml file and will shrink it to show as a pop up when the user
+ * clicks the button leading to this activity
+ *
+ * @author Melany Diaz
+ * date: November 2015
+ * %this is an app build for Mobile Computing 490, Professor Pam Cutter%
+ *
+ */
 public class Info2 extends Activity {
-
-    /**
-     * This activity takes the information shown in the corresponding
-     * xml file and will shrink it to show as a pop up when the user
-     * clicks the button leading to this activity
-     *
-     * @author Melany Diaz
-     * @date November 2015
-     * %this is an app build for Mobile Computing 490, Professor Pam Cutter%
-     *
-     */
 
     Button button;
     @Override

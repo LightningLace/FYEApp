@@ -7,21 +7,18 @@ import android.view.View;
 import android.util.DisplayMetrics;
 import android.widget.Button;
 
-import k12md02converter.firstyearforums.FirstScreen;
-import k12md02converter.firstyearforums.R;
-
+/**
+ * This activity takes the information shown in the corresponding
+ * xml file and will shrink it to show as a pop up when the user
+ * clicks the button leading to this activity
+ *
+ * @author Melany Diaz
+ * date: November 2015
+ * %this is an app build for Mobile Computing 490, Professor Pam Cutter%
+ *
+ */
 public class Info5 extends Activity {
-
-    /**
-     * This activity takes the information shown in the corresponding
-     * xml file and will shrink it to show as a pop up when the user
-     * clicks the button leading to this activity
-     *
-     * @author Melany Diaz
-     * @date November 2015
-     * %this is an app build for Mobile Computing 490, Professor Pam Cutter%
-     *
-     */
+    public static final String EXTRA_FRAG = "com.stringclevername.fyeapp.MESSAGE";
 
     Button button;
     @Override
@@ -46,7 +43,8 @@ public class Info5 extends Activity {
             @Override
             public void onClick(View view) {
                 // Opening check in activity
-                Intent i = new Intent(getApplicationContext(), FirstScreen.class);
+                Intent i = new Intent(getApplicationContext(), SwipeActivity.class);
+                i.putExtra(EXTRA_FRAG, "fyfFrag");
                 startActivity(i);
             }
         });

@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.stringclevername.fyeapp"
-        minSdkVersion 21
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -33,4 +33,5 @@ dependencies {
     compile('com.afollestad.material-dialogs:commons:0.8.4.2@aar') {
         transitive = true
     }
+    compile 'com.google.zxing:core:3.0.0'
 }
