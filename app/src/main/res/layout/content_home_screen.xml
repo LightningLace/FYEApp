@@ -9,14 +9,36 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_home_screen" tools:context=".HomeScreen">
 
-    <TextView android:id="@+id/helloWorld"
-        android:text="Hello World!" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <Button android:id="@+id/mapButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Map"
-        android:layout_below="@id/helloWorld" />
+        android:layout_centerHorizontal="true"
+        android:text="Map" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/mapButton"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
+        android:scrollIndicators="right" >
+
+        <TextView android:id="@+id/attribution"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/mapButton"
+            android:paddingTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="" />
+
+    </ScrollView>
 
 </RelativeLayout>

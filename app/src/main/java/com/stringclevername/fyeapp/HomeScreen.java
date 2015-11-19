@@ -1,19 +1,19 @@
 package com.stringclevername.fyeapp;
 
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.android.gms.common.GoogleApiAvailability;
 
 public class HomeScreen extends AppCompatActivity {
-// TODO: Include Google Play Services attribution text ->
-// from https://developers.google.com/maps/documentation/android-api/intro
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,14 +24,15 @@ public class HomeScreen extends AppCompatActivity {
         // Buttons
         Button mapButton = (Button) findViewById(R.id.mapButton);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        // TextView
+        TextView attributionView = (TextView) findViewById(R.id.attribution);
+
+        // Get Google Play API attribution text
+        // (details at https://developers.google.com/maps/documentation/android-api/intro
+        String attributionText = GoogleApiAvailability.getInstance().getOpenSourceSoftwareLicenseInfo(getApplicationContext());
+
+        // Put attribution in TextView
+        attributionView.setText(attributionText);
 
         // Map button click event
         mapButton.setOnClickListener(new View.OnClickListener() {

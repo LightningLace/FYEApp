@@ -102,7 +102,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item
         // using parent.getItemAtPosition(pos)
-        Toast.makeText(this, "Item: " + pos, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Item: " + pos, Toast.LENGTH_SHORT).show();
         if (pos != 0 && pos != 1 && pos != 8 && pos != 21) {
             Marker thisMarker = markerList.get(pos);
             mMap.animateCamera(CameraUpdateFactory.newLatLng(thisMarker.getPosition()));
@@ -112,7 +112,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
-        Toast.makeText(this, "Nothing selected", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Nothing selected", Toast.LENGTH_SHORT).show();
     }
     // Specify the interface implementation:
     // This needs to be done so the spinner knows which
