@@ -119,4 +119,7 @@
     <string name="title_activity_group3">Group3</string>
     <string name="title_activity_group4">Group4</string>
     <string name="title_activity_group5">Group5</string>
+    <string name="open_location_settings">Enable</string>
+    <string name="cancel">Cancel</string>
+    <string name="gps_network_not_enabled">Please enable Location Services to view your location on the map.</string>
 </resources>
