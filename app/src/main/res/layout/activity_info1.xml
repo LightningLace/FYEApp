@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="k12md02converter.firstyearforums.ForumInfo.Info1"
+    android:background="#e5e6e6">
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY"
+        android:id="@+id/info1"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="48dp"
+        android:background="#e5e6e6"
+        android:text="Coming to college might be the greatest change you’ve made in your life so far – the maximum number of adjustments in the shortest period of time. You’ve left your network of support behind. You are building a new life, making your own decisions, reshaping your expectations, expanding your sense of self. As you construct your life at K, join us for a fall journey of First-Year Forums."
+        android:textColor="#565252"
+        android:textAlignment="inherit"
+        android:textStyle="bold" />
+
+</RelativeLayout>

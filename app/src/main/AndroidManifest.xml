@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.stringclevername.fyeapp" >
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!--
@@ -52,6 +53,8 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.stringclevername.fyeapp.SwipeActivity" />
+        </activity>
+        <activity android:name=".DSAListActivity" >
         </activity>
     </application>
 

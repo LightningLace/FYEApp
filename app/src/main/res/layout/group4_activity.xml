@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Group4: Career and Professional Development"
+        android:id="@+id/textView"
+        android:background="#999999"
+        android:textStyle="bold"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Secrets to Success Revealed"
+        android:id="@+id/textView15"
+        android:layout_marginTop="45dp"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="#e27226" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sept 23, 4:00-5:00PM, Dewing 103"
+        android:id="@+id/textView14"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#999999"
+        android:textSize="20dp" />
+
+</LinearLayout>
