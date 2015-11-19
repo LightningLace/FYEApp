@@ -30,7 +30,11 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 
 /**
- * This activity contains all the stuff.
+ * The main activity for the First-Year Experience App. Contains pages for the schedule,
+ * map launcher, First-Year Forum Info and Check-in, RA List, DSA List, and Policies.
+ *
+ * Created by Jordan Meiller  10/24/15
+ *
  */
 public class SwipeActivity extends AppCompatActivity {
 
@@ -85,23 +89,25 @@ public class SwipeActivity extends AppCompatActivity {
      * 1. Add your fragment as a public static class within the SwipeActivity class.
      * Make sure it extends Fragment and contains a public constructor. Change the onCreate
      * method to onCreateView, with appropriate parameters. See PlaceholderFragment below,
-     * and note the rootView variable.
+     * and note the use of the rootView variable. Also note that Contexts should be gotten
+     * through getContext(), not getActivity().getApplicationContext() or <code>this</code>.
      *
      * 2. In the layout file for your class, change the <code>tools:context</code> attribute
      * to "com.stringclevername.fyeapp.SwipeActivity$YourClassName". You may have to make other
      * changes to the layout to make it work as a fragment, like changing the id (make sure it's
-     * not main_content) and the padding. See placeholder_fragment_swipe.xml.
+     * not main_content) the padding, and the margins of elements. See placeholder_fragment_swipe.xml.
+     * Note that that the rendered preview will not be accurate.
      *
-     * 3. In the getItem method add a new case to the switch (or multiple cases if your
-     * fragment has multiple pages) that returns a new instance of your fragment
+     * 3. In the getItem method below add a new case to the switch that returns a new instance of
+     * your fragment
      * (e.g. <code>return new YourFragment()</code>).
      *
      * 4. Change the return value of getCount to match the new number of pages.
      *
      * 5. Add a case to getPageTitle that returns the title for your page.
      *
-     * The PlaceholderFragment has been left in (though commented) to give an example how this
-     * all works.
+     * The PlaceholderFragment has been left in (though commented) to give a simple example of
+     * how this all works.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 

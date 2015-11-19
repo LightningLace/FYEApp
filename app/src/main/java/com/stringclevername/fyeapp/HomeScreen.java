@@ -6,6 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+/**
+ * The home screen for the app. Has the user enter a name which is used to address them
+ * in the rest of the app, then goes to the main activity.
+ *
+ * Created by Ariah Lacey
+ */
 public class HomeScreen extends AppCompatActivity {
     public final static String EXTRA_NAME = "com.stringclevername.fyeapp.MESSAGE";
 
