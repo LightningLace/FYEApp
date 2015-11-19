@@ -51,7 +51,7 @@
         </activity>
         <activity
             android:name=".MapsActivity"
-            android:label=""
+            android:label="Campus Map"
             android:parentActivityName=".SwipeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

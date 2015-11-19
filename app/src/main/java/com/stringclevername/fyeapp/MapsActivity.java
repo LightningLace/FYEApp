@@ -1,7 +1,6 @@
 package com.stringclevername.fyeapp;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,19 +10,17 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -144,7 +141,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } else {
             // App does not have Location Permission
             // Instantiate an AlertDialog.Builder with constructor
-            AlertDialog.Builder popup = new AlertDialog.Builder(getApplicationContext());
+            AlertDialog.Builder popup = new AlertDialog.Builder(this);
             // Set dialog characteristics
             popup.setMessage("You have not granted Location Permission for the app. Your current location will be unavailable.");
             // Add "OK" button
@@ -165,7 +162,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public View getInfoContents(Marker marker) {
 
-                Context context = getApplicationContext(); //or getActivity(), YourActivity.this, etc.
+                Context context = MapsActivity.this; //or getActivity(), YourActivity.this, etc.
 
                 LinearLayout info = new LinearLayout(context);
                 info.setOrientation(LinearLayout.VERTICAL);

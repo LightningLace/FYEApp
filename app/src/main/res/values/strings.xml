@@ -7,7 +7,6 @@
     <string name="title_activity_swipe">SwipeActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
-
     <!-- Strings related to login -->
     <string name="prompt_Name">First, what should we call you?</string>
     <string name="enter_Name">Your name here</string>

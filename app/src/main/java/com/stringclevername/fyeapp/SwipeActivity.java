@@ -22,6 +22,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.GoogleApiAvailability;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -69,7 +71,7 @@ public class SwipeActivity extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         if ((intent.getStringExtra(Info5.EXTRA_FRAG)).equals("fyfFrag")){
-            mViewPager.setCurrentItem(5); // sets the current item to the FYF fragment if coming from FYF-related activities
+            mViewPager.setCurrentItem(3); // sets the current item to the FYF fragment if coming from FYF-related activities
         }
     }
 
@@ -127,14 +129,15 @@ public class SwipeActivity extends AppCompatActivity {
                 case 0:
                     return new scheduleActivity();
                 case 1:
-                    return new RAListActivity();
+                    return new MapsLauncher();
                 case 2:
-                    return new DSAListActivity();
+                    return new FYFFirstScreen();  // if moved, remember to change "fyfFrag" behavior
                 case 3:
-                    return new PoliciesActivity();
+                    return new RAListActivity();
                 case 4:
-                    return new FYFFirstScreen(); // if moved, remember to change "fyfFrag" behavior
-
+                    return new DSAListActivity();
+                case 5:
+                    return new PoliciesActivity();
             }
                 return null; // This should never be returned.
         }
@@ -145,7 +148,7 @@ public class SwipeActivity extends AppCompatActivity {
          */
         public int getCount() {
             // Show n total pages.
-            return 5;
+            return 6;
         }
 
         @Override
@@ -164,13 +167,15 @@ public class SwipeActivity extends AppCompatActivity {
                 case 0:
                     return "Schedule";
                 case 1:
-                    return "RA List";
+                    return "Campus Map";
                 case 2:
-                    return "DSA List";
-                case 3:
-                    return "Policies";
-                case 4:
                     return "FYF Check-In";
+                case 3:
+                    return "RA List";
+                case 4:
+                    return "DSA List";
+                case 5:
+                    return "Policies";
             }
             return null;
         }
@@ -820,5 +825,42 @@ public class SwipeActivity extends AppCompatActivity {
             return rootView;
         }
 
+    }
+
+    public static class MapsLauncher extends Fragment {
+        View rootView;
+
+        public MapsLauncher(){}
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            rootView = inflater.inflate(R.layout.fragment_maps, container, false);
+
+            // Buttons
+            Button mapButton = (Button) rootView.findViewById(R.id.mapButton);
+
+            // TextView
+            TextView attributionView = (TextView) rootView.findViewById(R.id.attribution);
+
+            // Get Google Play API attribution text
+            // (details at https://developers.google.com/maps/documentation/android-api/intro
+            String attributionText = GoogleApiAvailability.getInstance().getOpenSourceSoftwareLicenseInfo(getContext());
+
+            // Put attribution in TextView
+            attributionView.setText(attributionText);
+
+            // Map button click event
+            mapButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Launch Map activity
+                    Intent i = new Intent(getContext(), MapsActivity.class);
+                    startActivity(i);
+                }
+            });
+
+            return rootView;
+        }
     }
 }
