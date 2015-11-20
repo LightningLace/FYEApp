@@ -14,6 +14,7 @@ import android.widget.EditText;
  */
 public class HomeScreen extends AppCompatActivity {
     public final static String EXTRA_NAME = "com.stringclevername.fyeapp.MESSAGE";
+    public final static String EXTRA_FROMMAIN = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class HomeScreen extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.editText);
         String studentName = editText.getText().toString();
         intent.putExtra(EXTRA_NAME, studentName);
+        intent.putExtra(EXTRA_FROMMAIN, "true");
         startActivity(intent);
     }
 }

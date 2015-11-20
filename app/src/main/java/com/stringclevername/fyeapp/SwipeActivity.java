@@ -38,6 +38,8 @@ import java.io.IOException;
  */
 public class SwipeActivity extends AppCompatActivity {
 
+    public static String NAME = "";
+
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -60,8 +62,12 @@ public class SwipeActivity extends AppCompatActivity {
 
         // Get the user's name from the intent
         Intent intent = getIntent();
-        String name = "Welcome " + intent.getStringExtra(HomeScreen.EXTRA_NAME) + "!";
-        setTitle(name);
+        if ((intent.getStringExtra(HomeScreen.EXTRA_FROMMAIN)) != null) {
+            String name = "Welcome " + intent.getStringExtra(HomeScreen.EXTRA_NAME) + "!";
+            NAME = name;
+        }
+
+        setTitle(NAME);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -75,7 +81,7 @@ public class SwipeActivity extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         if ((intent.getStringExtra(Info5.EXTRA_FRAG)).equals("fyfFrag")){
-            mViewPager.setCurrentItem(3); // sets the current item to the FYF fragment if coming from FYF-related activities
+            mViewPager.setCurrentItem(2); // sets the current item to the FYF fragment if coming from FYF-related activities
         }
     }
 
