@@ -34,7 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Policies will appear and be explained here! (But some will link you to the webpage)"
-            android:id="@+id/policyDisplay" />
+            android:id="@+id/policyDisplay"
+            android:textSize="16sp"/>
     </ScrollView>
 
 </RelativeLayout>

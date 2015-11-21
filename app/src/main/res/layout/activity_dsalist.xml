@@ -39,7 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Do you have questions about particular classes, majors, minors, and/or concentrations? Departmental Student Advisors (DSAs) can help! Nominated by departments or programs, DSAs know firsthand what it’s like to be (for example) an English major or an Environmental Studies concentrator. They are available via e-mail and at special campus events to answer your questions. DSAs do not replace academic advisors or faculty, but serve as an additional resource at K.And watch for announcements advertising DSA events on campus."
-            android:id="@+id/textViewDSA"/>
+            android:id="@+id/textViewDSA"
+            android:textSize="16sp"/>
     </ScrollView>
 
     <Button
