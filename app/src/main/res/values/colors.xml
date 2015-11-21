@@ -6,4 +6,5 @@
     <color name="colorPrimaryBright">#d2ff812b</color>
     <color name="spinner_background">#E37226</color>
     <color name="primary_text_default_material_dark" tools:override="true">#000000</color>
+    <color name="background_material_light">#ffffff</color>
 </resources>

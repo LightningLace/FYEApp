@@ -30,7 +30,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="48dp"/>
+        android:layout_marginBottom="68dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -38,14 +38,14 @@
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="122dp"
+        android:layout_marginTop="102dp"
         android:background="@drawable/title"
         android:contentDescription="Forum Schedule: Click on a Group Number"/>
 
 
     <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:id="@+id/group1"
         android:background="@drawable/group1"
         android:layout_alignParentTop="true"
@@ -69,8 +69,8 @@
         android:id="@+id/group3"
         android:background="@drawable/group3"
         android:layout_alignBottom="@+id/group4"
-        android:layout_toLeftOf="@+id/group1"
-        android:layout_toStartOf="@+id/group1"
+        android:layout_alignLeft="@+id/group2"
+        android:layout_alignStart="@+id/group2"
         android:layout_marginRight="37dp"
         android:layout_marginEnd="37dp"
         android:contentDescription="Group 3"/>
