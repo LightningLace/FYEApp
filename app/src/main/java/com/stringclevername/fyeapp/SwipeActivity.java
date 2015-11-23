@@ -31,7 +31,8 @@ import java.io.IOException;
 
 /**
  * The main activity for the First-Year Experience App. Contains pages for the schedule,
- * map launcher, First-Year Forum Info and Check-in, RA List, DSA List, and Policies.
+ * map launcher, First-Year Forum Info and Check-in, RA List, DSA List, and Policies. See
+ * documentation for SectionsPagerAdapter for instructions on how to add a new page.
  *
  * Created by Jordan Meiller  10/24/15
  *
@@ -102,7 +103,7 @@ public class SwipeActivity extends AppCompatActivity {
      * to "com.stringclevername.fyeapp.SwipeActivity$YourClassName". You may have to make other
      * changes to the layout to make it work as a fragment, like changing the id (make sure it's
      * not main_content) the padding, and the margins of elements. See placeholder_fragment_swipe.xml.
-     * Note that that the rendered preview will not be accurate.
+     * Note that that the rendered preview may not be accurate.
      *
      * 3. In the getItem method below add a new case to the switch that returns a new instance of
      * your fragment
